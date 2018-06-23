@@ -9,7 +9,7 @@ __all__ = [
 
 
 class AtlasGetMeasurementResult(Action):
-    def run(self, measurement_id, start=None, stop=None, probe_ids=[]):
+    def run(self, measurement_id, probe_id):
         """
         # self.config['<key>'] is useful for retrieving API keys, etc.
         # not needed for this action, so everything is a parameter
@@ -17,23 +17,13 @@ class AtlasGetMeasurementResult(Action):
 
         is_success, m_results = AtlasResultsRequest(
             msm_id=measurement_id,
-            start=start,
-            stop=stop,
-            probe_ids=probe_ids
+            # start=start,
+            # stop=stop,
+            probe_ids=[probe_id]
         ).create()
 
-        # m_results is a list of dictionaries, one per probe
-        # each dict contains measurement from that probe
-
-        # Let's average all the averages together for fun
-        avgs = [result['avg'] for result in m_results]
-        avg = float(sum(avgs)) / max(len(avgs), 1)
-
-        # Provide calculated average as well as the raw results
-        # from cousteau
         action_results = {
-            "raw_results": m_results,
-            "latency_avg": avg
+            "last_result": m_results[-1]
         }
 
         return (is_success, action_results)
