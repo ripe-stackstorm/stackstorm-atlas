@@ -23,7 +23,7 @@ class PingStreamingSensor(Sensor):
 		# Bind function we want to run with every result message received
 		self.atlas_stream.bind_channel(channel, self.on_result_response)	
 
-	def on_result_response(*args):
+    def on_result_response(*args):
 		"""
 		Process the result from the Atlas Ping Probe
 		"""
