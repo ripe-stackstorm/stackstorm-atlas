@@ -1,0 +1,10 @@
+---
+class_name: "ProbesDiscoSensor"
+entry_point: "probes_disco_sensor.py"
+description: "Sensor for RIPE Atlas probes disco"
+trigger_types:
+  -
+    name: "probes_disco"
+    description: "This fires when the probe connects"
+    payload_schema:
+      type: "object"

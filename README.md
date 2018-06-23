@@ -16,6 +16,29 @@ Then, inside the VM you'll want to run:
 st2ctl reload
 ```
 
+## Actions
+
+`get_measurement_result`:
+
+```bash
+vagrant@st2vagrant:~$ st2 run atlas.get_measurement_result measurement_id=14680108
+id: 5b2e4478c4da5f10bb1f9f21
+status: succeeded
+parameters:
+  measurement_id: '14680108'
+result:
+  exit_code: 0
+  result:
+    latency_avg: 38.78349649659795
+    raw_results:
+    - af: 4
+      avg: 13.590395
+      dst_addr: 37.252.172.53
+      dst_name: adx.adnxs.com
+      dup: 0
+      from: 193.96.224.61
+```
+
 
 ## Resources
 
@@ -29,3 +52,4 @@ RIPE/RIPE Atlas
 - [RIPE Atlas Python Library](https://github.com/RIPE-NCC/ripe-atlas-cousteau)
 - [RIPE Atlas API Docs](https://atlas.ripe.net/docs/api/v2/manual/)
 - [RIPE Atlas python tools docs](https://ripe-atlas-cousteau.readthedocs.io/en/latest/)
+- [List of public measurements](https://atlas.ripe.net/measurements/?page=1#tab-ping)
