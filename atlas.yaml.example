@@ -1,0 +1,24 @@
+---
+
+# NOTE this needs to be changed. I just copied this from the NAPALM pack.
+
+html_table_class: napalm
+config_repo: https://github.com/StackStorm/vsrx-configs.git
+
+credentials:
+  core:
+    username: myuser
+    password: mypassword
+  customer:
+    username: customeruser
+    password: customerpw
+
+devices:
+- hostname: router1.lon
+  port: 22
+  driver: junos
+  credentials: core
+- hostname: router2.par
+  port: 22
+  driver: junos
+  credentials: customer

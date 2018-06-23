@@ -1,0 +1,10 @@
+---
+name: atlas
+description: RIPE Atlas pack
+keywords:
+    - ripe
+    - atlas
+    - measurements
+version: 0.1.0
+author: mierdin
+email: info@stackstorm.com
