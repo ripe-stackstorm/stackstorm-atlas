@@ -15,3 +15,15 @@ Then, inside the VM you'll want to run:
 ```
 st2ctl reload
 ```
+
+
+## Resources
+
+StackStorm:
+- [Docs](https://docs.stackstorm.com/)
+
+RIPE/RIPE Atlas
+- [RIPE Atlas CLI Tools](https://github.com/RIPE-NCC/ripe-atlas-tools)
+- [RIPE Atlas Python Library](https://github.com/RIPE-NCC/ripe-atlas-cousteau)
+- [RIPE Atlas API Docs](https://atlas.ripe.net/docs/api/v2/manual/)
+- [RIPE Atlas python tools docs](https://ripe-atlas-cousteau.readthedocs.io/en/latest/)
