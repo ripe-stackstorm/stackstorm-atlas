@@ -1,0 +1,27 @@
+---
+name: "get_measurement_result"
+runner_type: "python-script"
+description: "Retrieve a measurement result from RIPE Atlas"
+enabled: true
+entry_point: "get_measurement_result.py"
+parameters:
+    measurement_id:
+        type: "string"
+        description: "Measurement ID to retrieve"
+        required: true
+        position: 0
+    start:
+        type: "string"
+        description: ""
+        required: false
+        position: 1
+    stop:
+        type: "string"
+        description: ""
+        required: false
+        position: 2
+    probe_ids:
+        type: "string"
+        description: ""
+        required: false
+        position: 3
