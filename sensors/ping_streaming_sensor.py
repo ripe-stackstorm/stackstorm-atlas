@@ -23,7 +23,7 @@ class PingStreamingSensor(Sensor):
         self._logger = self.sensor_service.get_logger(name=self.__class__.__name__)
 
     def setup(self):
-        self.atlas_stream = AtlasStream()	
+        self.atlas_stream = AtlasStream()
 
     def on_result_response(self, *args):
         """
@@ -44,8 +44,8 @@ class PingStreamingSensor(Sensor):
         round_trip_times = []
         for result in args[0]['result']:
             if 'result' in result.keys():
-            	for probe_result in result['result']:
-            	    try:
+                for probe_result in result['result']:
+                    try:
                         round_trip_times.append(probe_result['rtt'])
                     except KeyError:
                          self._logger.info("No rtt data in this result")
@@ -61,13 +61,13 @@ class PingStreamingSensor(Sensor):
         
     def _dispatch_exceed_rtt_trigger(self, percentile):
         self._logger.info("Target rtt p{} of {}s exceeded, rtt p{} = {}s".format(
-        	PERCENTILE, TARGET_RTT_PERCENTILE, PERCENTILE, percentile))
+            PERCENTILE, TARGET_RTT_PERCENTILE, PERCENTILE, percentile))
         trigger = "atlas.rtt_p{}_exceeded".format(PERCENTILE)
         payload = {
             'percentile': PERCENTILE,
             'rtt': percentile,
         }
-        self._sensor_service.dispatch(trigger=trigger, payload=payload)    	
+        self._sensor_service.dispatch(trigger=trigger, payload=payload)
 
     def run(self):
         stream_parameters = {"msm": 5001}
