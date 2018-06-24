@@ -8,6 +8,6 @@ trigger:
     type: "atlas.RTTMedianChanged"
 
 action:
-  ref: "core.local"
+  ref: "twitter.update_status"
   parameters:
-    cmd: "echo \"probe {{trigger.prb_id}} detected rtt median changed from {{trigger.old_hops_median}} to {{trigger.new_hops_median}} \""
+    status: "probe {{trigger.prb_id}} detected rtt median changed from {{trigger.old_hops_median}} to {{trigger.new_hops_median}}"

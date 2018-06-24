@@ -8,6 +8,6 @@ trigger:
     type: "atlas.FromFieldDifferentThanGeneral"
 
 action:
-  ref: "core.local"
+  ref: "twitter.update_status"
   parameters:
-    cmd: "echo \"probe {{trigger.prb_id}} expected from {{trigger.expected_from_field}} but detected the following extra from values: {{trigger.found_from_fields}}. \""
+    status: "probe {{trigger.prb_id}} expected from {{trigger.expected_from_field}} but detected the following extra from values: {{trigger.found_from_fields}}"
