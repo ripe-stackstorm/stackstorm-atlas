@@ -7,7 +7,7 @@ description: "Sensor that emits a trigger when something happens in RIPE atlas"
 
 trigger_types:
 - name: "HopsNumberChanged"
-  description: "#TODO add description"
+  description: "Event triggered when the hop number changes between iterations"
   payload_schema:
     type: "object"
     properties:
@@ -21,7 +21,7 @@ trigger_types:
         type: "integer"
 
 - name: "RTTMedianChanged"
-  description: '#TODO add description'
+  description: "Event triggered when the RTT median detected by the probes varies by more than a set threshold"
   payload_schema:
     type: "object"
     properties:
@@ -35,7 +35,7 @@ trigger_types:
         type: "integer"
 
 - name: "FromFieldDifferentInAttempts"
-  description: '#TODO add description'
+  description: "Found different `from` fields in a single result from a probe"
   payload_schema:
     type: "object"
     properties:
@@ -47,7 +47,7 @@ trigger_types:
         type: "string"
 
 - name: "FromFieldDifferentThanGeneral"
-  description: "#TODO add description"
+  description: "Found an unexpected from field in one/all of the probe executions"
   payload_schema:
     type: "object"
     properties:
@@ -61,7 +61,7 @@ trigger_types:
         type: "string"
 
 - name: "HostPartiallyUnreachable"
-  description: "#TODO add description"
+  description: "The host became at least partially unreachable from the probe"
   payload_schema:
     type: "object"
     properties:
@@ -71,7 +71,7 @@ trigger_types:
         type: "string"
 
 - name: "HostPartiallyReachable"
-  description: "#TODO add description"
+  description: "The host became at least partially reachable from the probe"
   payload_schema:
     type: "object"
     properties:
