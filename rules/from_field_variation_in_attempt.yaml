@@ -1,0 +1,13 @@
+---
+name: "from_field_variation"
+pack: "atlas"
+description: "Triggers when a probe has more than one value for the `from` field in the same result set"
+enabled: true
+
+trigger:
+    type: "atlas.FromFieldDifferentInAttempts"
+
+action:
+  ref: "core.local"
+  parameters:
+    cmd: "echo \"probe {{trigger.prb_id}} detected the following values for the from field: {{trigger.hops_froms}}. Expecting to find 1 value. \""

@@ -1,0 +1,13 @@
+---
+name: "host_at_least_partially_reachable"
+pack: "atlas"
+description: "Triggers when the host became fully reachable from the previous state of unreachable"
+enabled: true
+
+trigger:
+    type: "atlas.HostPartiallyReachable"
+
+action:
+  ref: "core.local"
+  parameters:
+    cmd: "echo \"probe {{trigger.prb_id}} detected host {{trigger.dst_addr}} to have become reachable again. \""

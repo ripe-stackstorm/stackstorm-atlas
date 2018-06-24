@@ -1,0 +1,13 @@
+---
+name: "unexpected_from_field"
+pack: "atlas"
+description: "Triggers when the at least one of the from fields of the probe attempts is different than the `dst_addr` field of the general result"
+enabled: true
+
+trigger:
+    type: "atlas.FromFieldDifferentThanGeneral"
+
+action:
+  ref: "core.local"
+  parameters:
+    cmd: "echo \"probe {{trigger.prb_id}} expected from {{trigger.expected_from_field}} but detected the following extra from values: {{trigger.found_from_fields}}. \""
