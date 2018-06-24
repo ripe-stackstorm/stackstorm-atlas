@@ -38,6 +38,7 @@ class RIPEAtlasPolling(PollingSensor):
         # TODO: implement the actual measurement creation
         self._measurement = Measurement(id=self._config.get("measurement_id", HARDCODED_MEASUREMENT_ID))
         self._logger.info("Using measurement with ID %s", self._measurement.id)
+        self._rtt_tolerance = self._config.get("rtt_tolerance", RIPEAtlasPolling._rtt_tolerance)
 
     def poll(self):
         is_success, results = AtlasLatestRequest(msm_id=self._measurement.id,
