@@ -11,4 +11,4 @@ trigger:
 action:
     ref: "core.local"
     parameters:
-      cmd: "echo \"probe id disco event for probe id : {{trigger.prb_id}}\" >> /var/log/prb_evnts.log"
+      cmd: "echo \"probe with id {{trigger.prb_id}} {{trigger.event}}ed.\" >> /var/log/prb_evnts.log"
