@@ -8,6 +8,6 @@ trigger:
     type: "atlas.FromFieldDifferentInAttempts"
 
 action:
-  ref: "core.local"
+  ref: "twitter.update_status"
   parameters:
-    cmd: "echo \"probe {{trigger.prb_id}} detected the following values for the from field: {{trigger.hops_froms}}. Expecting to find 1 value. \""
+    status: "probe {{trigger.prb_id}} detected the following values for the from field: {{trigger.hops_froms}}. Expecting to find 1 value"

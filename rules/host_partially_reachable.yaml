@@ -8,6 +8,6 @@ trigger:
     type: "atlas.HostPartiallyReachable"
 
 action:
-  ref: "core.local"
+  ref: "twitter.update_status"
   parameters:
-    cmd: "echo \"probe {{trigger.prb_id}} detected host {{trigger.dst_addr}} to have become reachable again. \""
+    status: "probe {{trigger.prb_id}} detected host {{trigger.dst_addr}} to have become reachable again"

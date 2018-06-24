@@ -8,6 +8,6 @@ trigger:
     type: "atlas.HopsNumberChanged"
 
 action:
-  ref: "core.local"
+  ref: "twitter.update_status"
   parameters:
-    cmd: "echo \"probe {{trigger.prb_id}} detected changed from {{trigger.old_hops_number}} to {{trigger.new_hops_number}} \""
+    status: "probe {{trigger.prb_id}} detected changed from {{trigger.old_hops_number}} to {{trigger.new_hops_number}}"
