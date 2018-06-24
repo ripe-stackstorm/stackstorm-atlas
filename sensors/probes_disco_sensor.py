@@ -231,7 +231,7 @@ class ProbesDiscoSensor(Sensor):
                         asn_v4=asn_v4))
                     self.sensor_service.dispatch(
                         trigger=trigger,
-                        payload={event: 'AWAS! asn_v4 {asn_v4} less than 50 percent connected!'.format(
+                        payload={"event": 'AWAS! asn_v4 {asn_v4} less than 50 percent connected!'.format(
                             asn_v4=asn_v4)},
                         trace_tag="{asn_v4}-lessthan-{timestamp}".format(
                             asn_v4=asn_v4, timestamp=probe_update['timestamp'])
@@ -240,7 +240,7 @@ class ProbesDiscoSensor(Sensor):
                     self._logger.info(
                         'NO! asn_v4 {asn_v4} going down significantly'.format(asn_v4=asn_v4))
                     self.sensor_service.dispatch(
-                        trigger=trigger, payload={event: 'NO! asn_v4 {asn_v4} going down significantly'.format(asn_v4=asn_v4)}, trace_tag="{asn_v4}-down-{timestamp}".format(
+                        trigger=trigger, payload={"event": 'NO! asn_v4 {asn_v4} going down significantly'.format(asn_v4=asn_v4)}, trace_tag="{asn_v4}-down-{timestamp}".format(
                             asn_v4=asn_v4, timestamp=probe_update['timestamp']
                         )
                     )
@@ -249,7 +249,7 @@ class ProbesDiscoSensor(Sensor):
                         asn_v6=asn_v6))
                     self.sensor_service.dispatch(
                         trigger=trigger,
-                        payload={event: 'AWAS! asn_v6 {asn_v6} less than 50 percent connected!'.format(
+                        payload={"event": 'AWAS! asn_v6 {asn_v6} less than 50 percent connected!'.format(
                             asn_v6=asn_v6)},
                         trace_tag="{asn_v6}-lessthan-{timestamp}".format(
                             asn_v4=asn_v4, timestamp=probe_update['timestamp']
@@ -261,28 +261,28 @@ class ProbesDiscoSensor(Sensor):
                         'NO! asn_v6 {asn_v6} going down significantly'.format(asn_v6=asn_v6))
                     self.sensor_service.dispatch(
                         trigger=trigger,
-                        payload={event: 'NO! asn_v6 {asn_v6} going down significantly'.format(
+                        payload={"event": 'NO! asn_v6 {asn_v6} going down significantly'.format(
                             asn_v6=asn_v6)},
                         trace_tag="{asn_v6}-down-{timestamp}"
                     )
 
             # no AS presence
             if curr_asn_v4_conn > 1.0 and new_asn_v4_conn < 1.0:
-                self._logger.info('{asn_v4} completely offline'.format(
+                self._logger.info('as{asn_v4} completely offline'.format(
                     asn_v4=asn_v4))
                 self.sensor_service.dispatch(
                     trigger=trigger,
-                    payload={event: '{asn_v4} completely offline'.format(
+                    payload={"event": 'as{asn_v4} went completely offline'.format(
                         asn_v4=asn_v4)},
                     trace_tag="{asn_v4}-offline-{timestamp}".format(
                         asn_v4=asn_v4, timestamp=probe_update['timestamp'])
                 )
             if curr_asn_v6_conn > 1.0 and new_asn_v6_conn < 1.0:
-                self._logger.info('{asn_v6} completely offline'.format(
+                self._logger.info('{asn_v6} went completely offline'.format(
                     asn_v6=asn_v6))
                 self.sensor_service.dispatch(
                     trigger=trigger,
-                    payload={event: '{asn_v6} completely offline'.format(
+                    payload={"event": 'as{asn_v6} went completely offline'.format(
                         asn_v6=asn_v6)},
                     trace_tag="{asn_v6}-offline-{timestamp}".format(
                         asn_v6=asn_v6, timestamp=probe_update['timestamp'])
@@ -291,20 +291,20 @@ class ProbesDiscoSensor(Sensor):
             # AS picks up
             if new_asn_v4_conn and curr_asn_v4_conn and new_asn_v4_conn - curr_asn_v4_conn > 19.0:
                 self._logger.info(
-                    'YEAH! {asn_v4} seeing significant uptake in online probes'.format(asn_v4=asn_v4))
+                    'YEAH! as{asn_v4} seeing significant uptake in online probes'.format(asn_v4=asn_v4))
                 self.sensor_service.dispatch(
                     trigger=trigger,
-                    payload={event: 'YEAH! {asn_v4} seeing significant uptake in online probes'.format(
+                    payload={"event": 'YEAH! as{asn_v4} seeing significant uptake in online probes'.format(
                         asn_v4=asn_v4)},
                     trace_tag="{asn_v4}-uptake-{timestamp}".format(
                         asn_v4=asn_v4, timestamp=probe_update['timestamp'])
                 )
             if new_asn_v6_conn and curr_asn_v6_conn and new_asn_v6_conn - curr_asn_v6_conn > 19.0:
                 self._logger.info(
-                    'YEAH! {asn_v6} seeing significant uptake in online probes'.format(asn_v6=asn_v6))
+                    'YEAH! as{asn_v6} seeing significant uptake in online probes'.format(asn_v6=asn_v6))
                 self.sensor_service.dispatch(
                     trigger=trigger,
-                    payload={event: 'YEAH! {asn_v6} seeing significant uptake in online probes'.format(
+                    payload={"event": 'YEAH! as{asn_v6} seeing significant uptake in online probes'.format(
                         asn_v6=asn_v6)},
                     trace_tag="{asn_v6}-uptake-{timestamp}".format(
                         asn_v6=asn_v6, timestamp=probe_update['timestamp'])
@@ -314,7 +314,7 @@ class ProbesDiscoSensor(Sensor):
             if len(self._ases_v4_state.get(asn_v4, {}).get('LastDisconnected')) >= 3:
                 self.sensor_service.dispatch(
                     trigger=trigger,
-                    payload={event: 'OMG! {asn_v4} going down fast now'.format(
+                    payload={"event": 'OMG! as{asn_v4} going down fast now'.format(
                         asn_v4=asn_v4)},
                     trace_tag="{asn_v4}-downfast-{timestamp}".format(
                         asn_v4=asn_v4, timestamp=probe_update['timestamp'])
@@ -322,7 +322,7 @@ class ProbesDiscoSensor(Sensor):
             if len(self._ases_v6_state.get(asn_v6, {}).get('LastDisconnected')) >= 3:
                 self.sensor_service.dispatch(
                     trigger=trigger,
-                    payload={event: 'OMG! {asn_v6} going down fast now'.format(
+                    payload={"event": 'OMG! as{asn_v6} going down fast now'.format(
                         asn_v6=asn_v6)},
                     trace_tag="{asn_v6}-downfast-{timestamp}".format(
                         asn_v4=asn_v6, timestamp=probe_update['timestamp'])

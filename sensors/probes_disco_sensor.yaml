@@ -9,10 +9,5 @@ trigger_types:
     payload_schema:
       type: "object"
       properties:
-        prb_id: 
-          type: "integer"
-        timestamp:
-          type: "string"
-          format: "date-time"
         event:
           type: "string"
