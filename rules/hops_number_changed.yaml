@@ -1,0 +1,13 @@
+---
+name: "number_of_hops_changed"
+pack: "atlas"
+description: "Triggered when the number of hops changed"
+enabled: true
+
+trigger:
+    type: "atlas.HopsNumberChanged"
+
+action:
+  ref: "twitter.update_status"
+  parameters:
+    status: "probe {{trigger.prb_id}} detected changed from {{trigger.old_hops_number}} to {{trigger.new_hops_number}}"

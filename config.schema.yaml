@@ -1,57 +1,19 @@
 ---
-html_table_class:
-  description: "Class for table in HTML output."
-  type: "string"
+measurement_id:
+  description: "The measurement ID to retrive from RIPE Atlas"
+  type: "integer"
   required: true
 
-config_repo:
-  description: "Git repository where configurations are located"
-  type: "string"
+rtt_tolerance:
+  description: "The tolerance in ms for the drift of rtt"
+  type: "integer"
   required: false
+  default: 10
 
-devices:
-  description: "List of devices to map the device hostname with the driver and credentials"
-  required: true
+probes:
+  description: "The probes to use when querying the measurement ID"
   type: "array"
+  required: false
   items:
-    type: "object"
+    type: "integer"
     required: true
-    properties:
-      hostname:
-        description: "Hostname for the device"
-        type: "string"
-        required: true
-      port:
-        description: "Port for the device"
-        type: "integer"
-        required: false
-      driver:
-        description: "Driver for the device"
-        type: "string"
-        required: true
-      credentials:
-        description: "Credentials group used to login to the device"
-        type: "string"
-        required: true
-
-credentials:
-  type: "object"
-  required: true
-  patternProperties:
-      "^\\w+":
-        "$ref": "#/properties/cred_group"
-  additionalProperties: false
-
-cred_group:
-  type: "object"
-  properties:
-    username:
-      description: "Username for network device"
-      type: "string"
-      required: true
-    password:
-      description: "Password for network device"
-      type: "string"
-      secret: true
-      required: true
-  additionalProperties: false

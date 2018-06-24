@@ -8,7 +8,7 @@ from st2reactor.sensor.base import Sensor
 
 # Sample ping probe id
 PING_PROBE_ID = 5001
-
+PERCENTILE_TRIGGER = "atlas.rtt_percentile_exceeded"
 PERCENTILE = 75
 TARGET_RTT_PERCENTILE = 50 
 
@@ -62,12 +62,11 @@ class PingStreamingSensor(Sensor):
     def _dispatch_exceed_rtt_trigger(self, percentile):
         self._logger.info("Target rtt p{} of {}s exceeded, rtt p{} = {}s".format(
             PERCENTILE, TARGET_RTT_PERCENTILE, PERCENTILE, percentile))
-        trigger = "atlas.rtt_p{}_exceeded".format(PERCENTILE)
         payload = {
             'percentile': PERCENTILE,
-            'rtt': percentile,
+            'rtt': float(percentile),
         }
-        self._sensor_service.dispatch(trigger=trigger, payload=payload)
+        self._sensor_service.dispatch(trigger=PERCENTILE_TRIGGER, payload=payload)
 
     def run(self):
         stream_parameters = {"msm": 5001}
