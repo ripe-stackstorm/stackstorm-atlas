@@ -212,7 +212,8 @@ class ProbesDiscoSensor(Sensor):
         # Evaluate single probe disco
         if event == "connect" or event == 'disconnect':
             trigger = 'atlas.probes_disco'
-            payload = self._probes_state[prb_id]
+            payload = {event: "probe with id {prb_id} {event}ed.".format(
+                prb_id=prb_id, event=event)}
             trace_tag = "{prb_id}-{event}-{timestamp}".format(
                 prb_id=prb_id, event=event, timestamp=probe_update['timestamp'])
 
@@ -307,6 +308,24 @@ class ProbesDiscoSensor(Sensor):
                         asn_v6=asn_v6)},
                     trace_tag="{asn_v6}-uptake-{timestamp}".format(
                         asn_v6=asn_v6, timestamp=probe_update['timestamp'])
+                )
+
+            # Probes going down fast
+            if len(self._ases_v4_state.get(asn_v4, {}).get('LastDisconnected')) >= 3:
+                self.sensor_service.dispatch(
+                    trigger=trigger,
+                    payload={event: 'OMG! {asn_v4} going down fast now'.format(
+                        asn_v4=asn_v4)},
+                    trace_tag="{asn_v4}-downfast-{timestamp}".format(
+                        asn_v4=asn_v4, timestamp=probe_update['timestamp'])
+                )
+            if len(self._ases_v6_state.get(asn_v6, {}).get('LastDisconnected')) >= 3:
+                self.sensor_service.dispatch(
+                    trigger=trigger,
+                    payload={event: 'OMG! {asn_v6} going down fast now'.format(
+                        asn_v6=asn_v6)},
+                    trace_tag="{asn_v6}-downfast-{timestamp}".format(
+                        asn_v4=asn_v6, timestamp=probe_update['timestamp'])
                 )
 
         self._logger.info('connection percentage for asn_v4 {asn_v4} {old} -> {new}'.format(
