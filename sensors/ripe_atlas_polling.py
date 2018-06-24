@@ -13,6 +13,7 @@ RTT_NUMBER_CHANGED = "atlas.RTTMedianChanged"
 FROM_FIELD_DIFFERENT_IN_ATTEMPTS = "atlas.FromFieldDifferentInAttempts"
 FROM_FIELD_DIFFERENT_THAN_GENERAL = "atlas.FromFieldDifferentThanGeneral"
 HOST_PARTIALLY_UNREACHABLE = "atlas.HostPartiallyUnreachable"
+# TODO: fix naming. The case for the following trigger is when the host is fully reachable
 HOST_PARTIALLY_REACHABLE = "atlas.HostPartiallyReachable"
 
 class RIPEAtlasPolling(PollingSensor):
