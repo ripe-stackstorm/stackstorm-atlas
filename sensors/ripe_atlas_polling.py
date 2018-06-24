@@ -24,7 +24,7 @@ class RIPEAtlasPolling(PollingSensor):
     _measurement_delay_tolerance = 10
 
     # tolerance, in ms, of rtt
-    _rtt_tolerance = -10 # TODO: roll back to 10 instead of -10
+    _rtt_tolerance = 10
 
     def __init__(self, sensor_service, config):
         super(RIPEAtlasPolling, self).__init__(sensor_service=sensor_service,
