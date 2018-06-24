@@ -1,0 +1,81 @@
+
+---
+class_name: "RIPEAtlasPolling"
+entry_point: "ripe_atlas_polling.py"
+description: "Sensor that emits a trigger when something happens in RIPE atlas"
+
+
+trigger_types:
+- name: "HopsNumberChanged"
+  description: "#TODO add description"
+  payload_schema:
+    type: "object"
+    properties:
+      prb_id:
+        type: "string"
+      timestamp:
+        type: "string"
+      old_hops_number:
+        type: "integer"
+      new_hops_number:
+        type: "integer"
+
+- name: "RTTMedianChanged"
+  description: '#TODO add description'
+  payload_schema:
+    type: "object"
+    properties:
+      prb_id:
+        type: "string"
+      timestamp:
+        type: "string"
+      old_hops_median:
+        type: "integer"
+      new_hops_median:
+        type: "integer"
+
+- name: "FromFieldDifferentInAttempts"
+  description: '#TODO add description'
+  payload_schema:
+    type: "object"
+    properties:
+      prb_id:
+        type: "string"
+      timestamp:
+        type: "string"
+      hops_froms:
+        type: "string"
+
+- name: "FromFieldDifferentThanGeneral"
+  description: "#TODO add description"
+  payload_schema:
+    type: "object"
+    properties:
+      prb_id:
+        type: "string"
+      timestamp:
+        type: "string"
+      expected_from_field:
+        type: "string"
+      found_from_fields:
+        type: "string"
+
+- name: "HostPartiallyUnreachable"
+  description: "#TODO add description"
+  payload_schema:
+    type: "object"
+    properties:
+      prb_id:
+        type: "string"
+      timestamp:
+        type: "string"
+
+- name: "HostPartiallyReachable"
+  description: "#TODO add description"
+  payload_schema:
+    type: "object"
+    properties:
+      prb_id:
+        type: "string"
+      timestamp:
+        type: "string"
