@@ -65,7 +65,7 @@ class PingStreamingSensor(Sensor):
         trigger = "atlas.rtt_p{}_exceeded".format(PERCENTILE)
         payload = {
             'percentile': PERCENTILE,
-            'rtt': percentile,
+            'rtt': float(percentile),
         }
         self._sensor_service.dispatch(trigger=trigger, payload=payload)
 
