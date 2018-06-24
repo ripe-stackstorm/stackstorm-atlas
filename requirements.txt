@@ -1,1 +1,2 @@
 ripe.atlas.cousteau
+numpy

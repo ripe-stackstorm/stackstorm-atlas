@@ -1,0 +1,15 @@
+---
+name: "get_result"
+pack: "atlas"
+action_ref: "atlas.get_measurement_result"
+description: "Retrieve the results of a measurement"
+formats:
+  - "atlas get measurement results for {{ measurement_id }} from probe {{ probe_id }}"
+
+result:
+  format: |
+    Here are the measurement results for {{ execution.parameters.measurement_id }} from probe {{ execution.parameters.probe_id }}:
+
+    ```
+    {{execution.result.result.last_result|to_yaml_string}}
+    ```

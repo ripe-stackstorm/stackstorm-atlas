@@ -1,0 +1,10 @@
+---
+class_name: "PingStreamingSensor"
+entry_point: "ping_streaming_sensor.py"
+description: "Sensor for RIPE Atlas ping probes"
+trigger_types:
+  -
+    name: "ping_response_failure"
+    description: "This fires when the probe fails to ping the target"
+    payload_schema:
+      type: "object"
