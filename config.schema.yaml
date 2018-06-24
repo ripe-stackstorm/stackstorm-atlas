@@ -4,6 +4,12 @@ measurement_id:
   type: "integer"
   required: true
 
+rtt_tolerance:
+  description: "The tolerance in ms for the drift of rtt"
+  type: "integer"
+  required: false
+  default: 10
+
 probes:
   description: "The probes to use when querying the measurement ID"
   type: "array"
