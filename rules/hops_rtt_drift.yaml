@@ -10,4 +10,4 @@ trigger:
 action:
   ref: "core.local"
   parameters:
-    cmd: "echo \"probe {{trigger.prb_id}} detected RTT drift from {{trigger.old_hops_median}} to {{trigger.new_hops_median}} \" >> /var/log/prb_evnts.log"
+    cmd: "echo \"probe {{trigger.prb_id}} detected hop changed {{trigger.old_hops_median}} to {{trigger.new_hops_median}} \""
