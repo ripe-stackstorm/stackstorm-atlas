@@ -116,7 +116,7 @@ class RIPEAtlasPolling(PollingSensor):
         if hops_comparison_result is not True:
             self._send_trigger(trigger=RTT_NUMBER_CHANGED,
                                payload=dict({"old_hops_median": hops_comparison_result[0],
-                                             "new_hself.ops_median": hops_comparison_result[1]},
+                                             "new_hops_median": hops_comparison_result[1]},
                                              **payload_base))
 
     def _validate_from_fields(self, new_probe_result):
