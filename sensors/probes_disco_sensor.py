@@ -309,6 +309,24 @@ class ProbesDiscoSensor(Sensor):
                         asn_v6=asn_v6, timestamp=probe_update['timestamp'])
                 )
 
+            # Probes going down fast
+            if len(self._ases_v4_state.get(asn_v4, {}).get('LastDisconnected')) >= 3:
+                self.sensor_service.dispatch(
+                    trigger=trigger,
+                    payload={event: 'OMG! {asn_v4} going down fast now'.format(
+                        asn_v4=asn_v4)},
+                    trace_tag="{asn_v4}-downfast-{timestamp}".format(
+                        asn_v4=asn_v4, timestamp=probe_update['timestamp'])
+                )
+            if len(self._ases_v6_state.get(asn_v6, {}).get('LastDisconnected')) >= 3:
+                self.sensor_service.dispatch(
+                    trigger=trigger,
+                    payload={event: 'OMG! {asn_v6} going down fast now'.format(
+                        asn_v6=asn_v6)},
+                    trace_tag="{asn_v6}-downfast-{timestamp}".format(
+                        asn_v4=asn_v6, timestamp=probe_update['timestamp'])
+                )
+
         self._logger.info('connection percentage for asn_v4 {asn_v4} {old} -> {new}'.format(
             asn_v4=asn_v4, old=curr_asn_v4_conn, new=new_asn_v4_conn))
         self._logger.info('connection percentage for asn_v6 {asn_v6} {old} -> {new}'.format(
