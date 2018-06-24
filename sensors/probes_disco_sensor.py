@@ -9,7 +9,9 @@ ALL_PROBES_STATE_URL = "https://atlas.ripe.net/api/v2/probes/all"
 
 STATUS_MAP = {
     1: "Connected",
-    2: "Disconnected"
+    2: "Disconnected",
+    3: "Abandoned",
+    4: "NeverSeen"
 }
 
 import requests
