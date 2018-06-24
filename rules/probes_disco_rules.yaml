@@ -6,9 +6,13 @@ enabled: true
 
 trigger:
     type: "atlas.probes_disco"
-    parameters: {}
+
+# action:
+#     ref: "core.local"
+#     parameters:
+#       cmd: "echo \"{{trigger.event}}\" >> /var/log/prb_evnts.log"
 
 action:
-    ref: "core.local"
-    parameters:
-      cmd: "echo \"probe with id {{trigger.prb_id}} {{trigger.event}}ed.\" >> /var/log/prb_evnts.log"
+  ref: "twitter.update_status"
+  parameters:
+    status: "{{trigger.event}}"

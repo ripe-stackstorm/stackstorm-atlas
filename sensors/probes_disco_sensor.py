@@ -212,7 +212,8 @@ class ProbesDiscoSensor(Sensor):
         # Evaluate single probe disco
         if event == "connect" or event == 'disconnect':
             trigger = 'atlas.probes_disco'
-            payload = self._probes_state[prb_id]
+            payload = {event: "probe with id {prb_id} {event}ed.".format(
+                prb_id=prb_id, event=event)}
             trace_tag = "{prb_id}-{event}-{timestamp}".format(
                 prb_id=prb_id, event=event, timestamp=probe_update['timestamp'])
 
