@@ -1,0 +1,14 @@
+---
+name: "probes_disco_rules"
+pack: "atlas"
+description: "Rules for firing probes disco events"
+enabled: true
+
+trigger:
+    type: "atlas.probes_disco"
+    parameters: {}
+
+action:
+    ref: "core.local"
+    parameters:
+      cmd: "echo \"probe id disco event for probe id : {{trigger.prb_id}}\" >> /var/log/prb_evnts.log"
