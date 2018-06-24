@@ -27,9 +27,10 @@ class RIPEAtlasPolling(PollingSensor):
     # tolerance, in ms, of rtt
     _rtt_tolerance = 10
 
-    def __init__(self, sensor_service, config):
+    def __init__(self, sensor_service, config, poll_interval):
         super(RIPEAtlasPolling, self).__init__(sensor_service=sensor_service,
-                                               config=config)
+                                               config=config,
+                                               poll_interval=poll_interval)
         self._logger = self.sensor_service.get_logger(name=self.__class__.__name__)
         self._previous_measurement = {}
         self._measurement = None

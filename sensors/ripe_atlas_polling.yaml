@@ -3,7 +3,7 @@
 class_name: "RIPEAtlasPolling"
 entry_point: "ripe_atlas_polling.py"
 description: "Sensor that emits a trigger when something happens in RIPE atlas"
-
+poll_interval: 30
 
 trigger_types:
 - name: "HopsNumberChanged"
