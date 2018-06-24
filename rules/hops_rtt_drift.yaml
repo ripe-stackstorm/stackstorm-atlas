@@ -1,0 +1,13 @@
+---
+  name: "rtt_drifted"
+  pack: "atlas"
+  description: "Triggered when the median rtt changed from a previously observed value."
+  enabled: true
+
+  trigger:
+      type: "atlas.RTTMedianChanged"
+
+  action:
+    ref: "core.local"
+    parameters:
+      cmd: "echo \"probe {{trigger.prb_id}} detected RTT drift from {{trigger.old_hops_median}} to {{trigger.new_hops_median}} \" >> /var/log/prb_evnts.log"
