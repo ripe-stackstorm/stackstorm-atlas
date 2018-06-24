@@ -217,8 +217,8 @@ class ProbesDiscoSensor(Sensor):
             trace_tag = "{prb_id}-{event}-{timestamp}".format(
                 prb_id=prb_id, event=event, timestamp=probe_update['timestamp'])
 
-        self.sensor_service.dispatch(
-            trigger=trigger, payload=payload, trace_tag=trace_tag)
+            self.sensor_service.dispatch(
+                trigger=trigger, payload=payload, trace_tag=trace_tag)
 
         # Evaluate ASes disco
         if event == "disconnect":
