@@ -101,12 +101,14 @@ class RIPEAtlasPolling(PollingSensor):
             if (self._probe_results_host_unreachable(new_probe_result["result"]) and not
                 self._probe_results_host_unreachable(old_probe_result["result"])):
                 self._send_trigger(trigger=HOST_PARTIALLY_REACHABLE,
-                                   payload=dict(**payload_base))
+                                   payload=dict({"dst_addr": new_probe_result["dst_addr"]},
+                                                **payload_base))
 
             if (self._probe_results_host_unreachable(old_probe_result["result"]) and not
                 self._probe_results_host_unreachable(new_probe_result["result"])):
                 self._send_trigger(trigger=HOST_PARTIALLY_UNREACHABLE,
-                                   payload=dict(**payload_base))
+                                   payload=dict({"dst_addr": new_probe_result["dst_addr"]},
+                                                **payload_base))
             return
 
         self._logger.info("Looks like the results do not have unreachables %s\n%s",
