@@ -35,7 +35,7 @@ class RIPEAtlasPolling(PollingSensor):
 
     def setup(self):
         # TODO: implement the actual measurement creation
-        self._measurement = Measurement(self._config["measurement_id"] or id=HARDCODED_MEASUREMENT_ID)
+        self._measurement = Measurement(id=self._config.get("measurement_id", HARDCODED_MEASUREMENT_ID))
         self._logger.info("Using measurement with ID %s", self._measurement.id)
 
     def poll(self):
