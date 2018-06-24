@@ -1,2 +1,3 @@
 ripe.atlas.cousteau
 numpy
+requests
